@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Nuevo ticket | Soporte IT Planta{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">MESA DE AYUDA · REGISTRO</p><h1>Nuevo ticket de soporte</h1><p class="muted">Captura el incidente para facilitar su seguimiento.</p></div><a class="button secondary" href="{{ url_for('dashboard') }}">← Volver al panel</a></section>
+<form class="form-panel" method="post">
+  <div class="form-section"><h2>Descripción del incidente</h2><p class="muted">Describe el problema con información útil para el diagnóstico.</p></div>
+  <div class="form-grid"><label class="field span-2">Título del incidente *<input name="title" maxlength="120" required value="{{ data.get('title','') }}" placeholder="Ej. Estación de producción sin conexión"></label>
+  <label class="field span-2">Descripción *<textarea name="description" rows="4" required placeholder="¿Qué sucede? ¿Desde cuándo? ¿A cuántos usuarios afecta?">{{ data.get('description','') }}</textarea></label>
+  <label class="field">Nombre de quien reporta *<input name="requester" maxlength="100" required value="{{ data.get('requester','') }}" placeholder="Nombre del usuario"></label>
+  <label class="field">Área afectada *<select name="area" required><option value="">Seleccionar área</option>{% for area in areas %}<option {% if data.get('area') == area %}selected{% endif %}>{{ area }}</option>{% endfor %}</select></label>
+  <label class="field">Equipo / estación<input name="workstation" maxlength="80" value="{{ data.get('workstation','') }}" placeholder="Ej. PC-PROD-014"></label>
+  <label class="field">Categoría *<select name="category" required><option value="">Seleccionar categoría</option>{% for category in categories %}<option {% if data.get('category') == category %}selected{% endif %}>{{ category }}</option>{% endfor %}</select></label>
+  <label class="field">Prioridad *<select name="priority" required><option value="">Seleccionar prioridad</option>{% for priority in priorities %}<option {% if data.get('priority') == priority %}selected{% endif %}>{{ priority }}</option>{% endfor %}</select></label>
+  <label class="field">Responsable asignado<input name="assigned_to" maxlength="100" value="{{ data.get('assigned_to','') }}" placeholder="Opcional"></label></div>
+  <div class="form-actions"><span class="muted">* Campos obligatorios</span><button class="button primary" type="submit">Guardar ticket</button></div>
+</form>
+{% endblock %}

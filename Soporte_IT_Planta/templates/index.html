@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Panel | Soporte IT Planta{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">OPERACIONES · MESA DE AYUDA</p><h1>Panel de soporte IT</h1><p class="muted">Registra incidentes y da seguimiento a los equipos y áreas de la planta.</p></div><a class="button primary" href="{{ url_for('new_ticket') }}">Registrar incidente <span>↗</span></a></section>
+<section class="stats-grid">
+  <article class="stat-card"><span class="stat-label">Tickets registrados</span><strong>{{ stats.total }}</strong><span class="stat-foot">Total histórico</span></article>
+  <article class="stat-card"><span class="stat-label">Abiertos</span><strong>{{ stats.open }}</strong><span class="stat-foot">Pendientes de atención</span></article>
+  <article class="stat-card"><span class="stat-label">En progreso</span><strong>{{ stats.progress }}</strong><span class="stat-foot">En atención</span></article>
+  <article class="stat-card alert-stat"><span class="stat-label">Críticos pendientes</span><strong>{{ stats.critical }}</strong><span class="stat-foot">Requieren prioridad</span></article>
+</section>
+<section class="panel">
+  <div class="panel-heading"><div><h2>Tickets de soporte</h2><p class="muted">Ordenados por prioridad y fecha de creación.</p></div><span class="count-chip">{{ tickets|length }} resultados</span></div>
+  <form class="filters" method="get" action="{{ url_for('dashboard') }}"><label class="search-field"><span>⌕</span><input type="search" name="q" value="{{ search }}" placeholder="Buscar título, solicitante, área o equipo"></label><select name="status" aria-label="Filtrar por estado"><option value="">Todos los estados</option>{% for status in statuses %}<option value="{{ status }}" {% if selected_status == status %}selected{% endif %}>{{ status }}</option>{% endfor %}</select><button class="button secondary" type="submit">Filtrar</button>{% if search or selected_status %}<a class="clear-filter" href="{{ url_for('dashboard') }}">Limpiar</a>{% endif %}</form>
+  {% if tickets %}<div class="table-wrap"><table><thead><tr><th>Ticket</th><th>Área / equipo</th><th>Prioridad</th><th>Estado</th><th>Actualizado</th><th></th></tr></thead><tbody>
+  {% for ticket in tickets %}<tr><td><a class="ticket-link" href="{{ url_for('ticket_detail', ticket_id=ticket.id) }}">#{{ ticket.id }} · {{ ticket.title }}</a><small>{{ ticket.category }} · {{ ticket.requester }}</small></td><td>{{ ticket.area }}<small>{{ ticket.workstation or 'Equipo no especificado' }}</small></td><td><span class="priority {{ ticket.priority|priority_class }}">{{ ticket.priority }}</span></td><td><span class="status status-{{ ticket.status|lower|replace(' ', '-') }}">{{ ticket.status }}</span></td><td>{{ ticket.updated_at }}</td><td><a class="row-arrow" href="{{ url_for('ticket_detail', ticket_id=ticket.id) }}" aria-label="Ver ticket">→</a></td></tr>{% endfor %}
+  </tbody></table></div>{% else %}<div class="empty"><div class="empty-icon">✓</div><h3>No hay tickets que mostrar</h3><p>Registra un incidente o cambia los filtros de búsqueda.</p><a class="button primary" href="{{ url_for('new_ticket') }}">Crear primer ticket</a></div>{% endif %}
+</section>
+{% endblock %}
