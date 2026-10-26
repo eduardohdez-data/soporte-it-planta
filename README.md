@@ -41,7 +41,7 @@ Consulta la documentación técnica para encontrar los requisitos, instrucciones
 - [Aplicación principal](Soporte_IT_Planta/app.py)
 - [Generación de datos de demostración](Soporte_IT_Planta/seed_demo.py)
 - [Dependencias de Python](Soporte_IT_Planta/requirements.txt)
-- [Guía de capturas](Soporte_IT_Planta/docs/img.md)
+- [Guía de capturas](Soporte_IT_Planta/docs/CAPTURAS.md)
 
 ## Tipo de proyecto
 
