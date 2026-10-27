@@ -43,6 +43,17 @@ Consulta la documentación técnica para encontrar los requisitos, instrucciones
 - [Dependencias de Python](Soporte_IT_Planta/requirements.txt)
 - [Guía de capturas](Soporte_IT_Planta/docs/CAPTURAS.md)
 
+## Capturas de pantalla
+
+### Panel principal
+![Panel de tickets](Soporte_IT_Planta/docs/img/panel.png)
+
+### Detalle del incidente
+![Detalle del ticket](Soporte_IT_Planta/docs/img/detalle-ticket.png)
+
+### Historial de seguimiento
+![Historial del ticket](Soporte_IT_Planta/docs/img/historial-ticket.png)
+
 ## Tipo de proyecto
 
 Proyecto personal de práctica ejecutado localmente. No está conectado a sistemas empresariales reales ni está diseñado para utilizarse en producción.
