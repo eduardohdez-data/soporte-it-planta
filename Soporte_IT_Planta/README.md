@@ -101,14 +101,3 @@ Esta es una demostración local; no es un sistema listo para producción. No inc
 
 ### Historial de seguimiento
 ![Historial del ticket](docs/img/historial-ticket.png)
-
-## Capturas de pantalla
-
-### Panel principal
-![Panel de tickets](Soporte_IT_Planta/docs/img/panel.png)
-
-### Detalle del incidente
-![Detalle del ticket](Soporte_IT_Planta/docs/img/detalle-ticket.png)
-
-### Historial de seguimiento
-![Historial del ticket](Soporte_IT_Planta/docs/img/historial-ticket.png)
