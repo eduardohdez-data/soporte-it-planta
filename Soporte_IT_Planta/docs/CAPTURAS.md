@@ -20,7 +20,7 @@ Abre la página principal y verifica que se muestren los tickets de demostració
 
 Guarda una captura con el nombre:
 
-`panel.png`
+`img/panel.png`
 
 ## 3. Captura del detalle de un ticket
 
